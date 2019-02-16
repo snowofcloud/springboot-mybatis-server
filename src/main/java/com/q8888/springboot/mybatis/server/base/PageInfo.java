@@ -34,13 +34,4 @@ public class PageInfo<T> implements Serializable {
         return pageInfo;
     }
 
-//    public PageInfo(Page<T> page) {
-//        super();
-//        this.list = page.getRecords();
-//        this.pageIndex = page.getCurrent();
-//        this.pageSize = page.getSize();
-//        this.count = page.getTotal();
-//        this.pageTotal = page.getPages();
-//    }
-
 }

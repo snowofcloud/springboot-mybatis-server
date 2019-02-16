@@ -33,8 +33,15 @@ public class AeraController {
     public JsonResult queryArea(@ApiParam(name = "id", value = "区域id", required = true)
                                 @NotEmpty(message = "区域id不能为空") @PathVariable("id") Long id){
         Area area = areaService.selectById(id);
-        //return new JsonResult(SUCCESS,area.getArea());
         return new JsonResult(SUCCESS,area);
+    }
+
+    @ApiOperation("简单测试练习")
+    @GetMapping("/jian")
+    public JsonResult eerr(){
+        int a = 6;
+        int c = a / 0;
+        return new JsonResult(SUCCESS,c);
     }
 
 }
