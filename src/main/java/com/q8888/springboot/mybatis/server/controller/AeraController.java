@@ -28,6 +28,11 @@ public class AeraController {
     @Autowired
     private AreaService areaService;
 
+    /**
+     * 根据区域id查询区域名称
+     * @param id
+     * @return
+     */
     @ApiOperation("根据区域id查询区域名称")
     @GetMapping("/queryAreaById/{id}")
     public JsonResult queryArea(@ApiParam(name = "id", value = "区域id", required = true)

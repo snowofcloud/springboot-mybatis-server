@@ -15,6 +15,8 @@ public final class Constants {
     public static final String WASTE_PATTERN = "\\d{3}-\\d{3}-\\d{2}";
     public static final String CREDIT_CODE = "[0-9A-HJ-NPQRTUWXY]{2}\\d{6}[0-9A-HJ-NPQRTUWXY]{10}";
     public static final String DISPOSAL_CODE = "\\d{10}";
+    //public static final String P_MOBILE_PHONE = "^[1][0-9]{10}$";
+    public static final String P_MOBILE_PHONE = "^((17[0-9])|(14[0-9])|(13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";;
 
     public static final String CODE = "DZLDS";
 
