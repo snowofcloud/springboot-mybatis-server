@@ -44,9 +44,10 @@ public class AeraController {
     @ApiOperation("简单测试练习")
     @GetMapping("/jian")
     public JsonResult eerr(){
-        int a = 6;
-        int c = a / 0;
-        return new JsonResult(SUCCESS,c);
+        //测试热部署用的
+        int a = 6666456;
+        System.out.println(a);
+        return new JsonResult(SUCCESS,a);
     }
 
 }

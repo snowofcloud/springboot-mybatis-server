@@ -1,24 +1,21 @@
 server:
   port: 8080
 
-spring:
 
-  #发送右键配置
-  mail:
-    host: smtp.163.com #发送邮件服务器
-    username: ...@163.com #发送邮件的邮箱地址
-    password: ... #客户端授权码，不是邮箱密码,网易的是自己设置的
-    properties.mail.smtp.port: 994 #465或者994
-    from: ...@163.com # 发送邮件的地址，和上面username一致可以任意
-    properties.mail.smtp.starttls.enable: true
-    properties.mail.smtp.starttls.required: true
-    properties.mail.smtp.ssl.enable: true
-    default-encoding: utf-8
+#日志配置
+logging:
+  #在项目的根目录下添加server.log文件，打印系统启动、异常等日志
+  path:  ../../mybatis-server/
+  file: server.log
+
+
+spring:
 
   #swagger等配置
   profiles:
     #配置当前的环境：开发环境还是生产环境dev、prod
     active: dev
+
   app:
     dev-model: false
 
@@ -46,6 +43,28 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
 
+  #发送右键配置
+  mail:
+    host: smtp.163.com #发送邮件服务器
+    username: ...@163.com #发送邮件的邮箱地址
+    password: ... #客户端授权码，不是邮箱密码,网易的是自己设置的
+    properties.mail.smtp.port: 994 #465或者994
+    from: ...@163.com # 发送邮件的地址，和上面username一致可以任意
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.ssl.enable: true
+    default-encoding: utf-8
+
+  #热部署配置
+  devtools:
+    remote:
+      restart:
+        enabled: true
+    restart:
+      additional-paths: springboot-mybatis-server/src/main
+
+
+## MyBatis相关配置
 ## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
 mybatis:
   mapper-locations: classpath:mapping/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
@@ -58,9 +77,5 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
 
-#日志配置
-logging:
-  #在项目的根目录下添加server.log文件，打印系统启动、异常等 日志
-  path:  ../../mybatis-server/
-  file: server.log
+
 
