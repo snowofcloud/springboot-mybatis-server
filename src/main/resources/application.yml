@@ -2,12 +2,15 @@ server:
   port: 8080
 
 spring:
+
+  #swagger等配置
   profiles:
     #配置当前的环境：开发环境还是生产环境dev、prod
     active: dev
   app:
     dev-model: false
 
+  #数据源配置
   datasource:
     #name: test
     url: jdbc:mysql://127.0.0.1:3306/mybatis?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
@@ -42,3 +45,10 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+#日志配置
+logging:
+  #在项目的根目录下添加server.log文件，打印系统启动、异常等 日志
+  path:  ../../mybatis-server/
+  file: server.log
+
