@@ -73,12 +73,13 @@ spring:
     default-encoding: utf-8
 
   #热部署配置
-  devtools:
-    remote:
-      restart:
-        enabled: true
-    restart:
-      additional-paths: springboot-mybatis-server/src/main
+  #热部署功能暂时去掉，用不上；用的时候打开配置
+#  devtools:
+#    remote:
+#      restart:
+#        enabled: true
+#    restart:
+#      additional-paths: springboot-mybatis-server/src/main
 
 
 ## MyBatis相关配置
