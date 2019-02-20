@@ -1,6 +1,26 @@
 server:
   port: 8080
 
+app:
+  dev-model: false
+
+  uac:
+    target: server:view
+    keyName: token-s
+    expire: 30
+    serverUrl: http://uac.asoco.com.cn
+    authUrl: https://nav.asoco.com.cn?backType=web&backUrl=
+
+  outside:
+    apiUrl: https://api.asoco.com.cn
+    accessToken: 9340eb2a391144e1aac14c6b6d53
+    dseUrl: http://192.168.1.177:8090/api/dse
+    videoUrl: /api/oss/videos
+    videoListUrl: /api/oss/hik/video
+    videoListByRoleUrl: /api/oss/video
+    uploadUrl: /oss/upload
+    uploadB64Url: /oss/upload-b64
+    bucketName: mybatis-server
 
 #日志配置
 logging:
@@ -15,9 +35,6 @@ spring:
   profiles:
     #配置当前的环境：开发环境还是生产环境dev、prod
     active: dev
-
-  app:
-    dev-model: false
 
   #数据源配置
   datasource:
