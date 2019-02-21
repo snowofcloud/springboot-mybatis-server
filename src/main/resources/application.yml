@@ -26,26 +26,26 @@ app:
 logging:
   #在项目的根目录下添加server.log文件，打印系统启动、异常等日志
   path:  ../../mybatis-server/
+  #将日志打印到server.log文件里面
   file: server.log
 
 
 spring:
-
   #swagger等配置
   profiles:
     #配置当前的环境：开发环境还是生产环境dev、prod
     active: dev
-
   #数据源配置
   datasource:
     #name: test
     url: jdbc:mysql://127.0.0.1:3306/mybatis?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    #url: jdbc:mysql://127.0.0.1:3306/mybatis?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     username: root2
     password: 123456
+    #driver-class-name: com.mysql.jdbc.Driver   #数据源的配置好好总结一下
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     #type: com.zaxxer.hikari.HikariDataSource
-    #driver-class-name: com.mysql.cj.jdbc.Driver   数据源的配置好好总结一下
     filters: stat
     maxActive: 20
     initialSize: 1

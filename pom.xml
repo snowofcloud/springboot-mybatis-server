@@ -119,6 +119,7 @@
             <version>3.17</version>
         </dependency>
         <!--日志-->
+        <!--用lombok打印日志，只用下面这一个就可以了-->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -206,5 +207,9 @@
             <url>http://36.22.178.70:10002/nexus/content/groups/public/</url>
         </repository>
     </repositories>
+
+    <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
+
+
 
 </project>

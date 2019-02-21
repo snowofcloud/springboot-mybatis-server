@@ -4,20 +4,24 @@ import com.q8888.springboot.mybatis.server.base.JsonResult;
 import com.q8888.springboot.mybatis.server.entity.User;
 import com.q8888.springboot.mybatis.server.service.UserService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+
+import static com.q8888.springboot.mybatis.server.base.JsonResult.State.SUCCESS;
 
 /**
  * @auther xuxq
  * @date 2019/2/15 19:39
  */
 @Api(tags = "用户登陆")
+@Slf4j //打印日志用的注解
 @Controller
 @RequestMapping(value = "api/user")
 public class UserController {
@@ -30,13 +34,18 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/add", produces = {"application/json;charset=UTF-8"})
     public JsonResult addUser(@Validated User user){
-        return new JsonResult(JsonResult.State.SUCCESS,userService.addUser(user));
+        log.info("addUser",user);
+        return new JsonResult(SUCCESS,userService.addUser(user));
     }
 
     @ResponseBody
     @RequestMapping(value = "/all/{pageNum}/{pageSize}", produces = {"application/json;charset=UTF-8"})
     public JsonResult findAllUser(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize){
-        return new JsonResult(JsonResult.State.SUCCESS,userService.findAllUser(pageNum,pageSize));
+        List<User> allUser = userService.findAllUser(pageNum, pageSize);
+        log.info("findAllUser"+allUser.toString());
+        log.error("findAllUser",allUser);
+        log.debug("findAllUser",allUser);
+        return new JsonResult(SUCCESS,allUser);
     }
 
     /**
