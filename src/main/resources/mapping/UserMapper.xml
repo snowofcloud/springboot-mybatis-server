@@ -8,31 +8,37 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
+
   <sql id="Base_Column_List" >
-    user_id, user_name, password, phone
+    user_id, user_name, password, phone,status
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from t_user
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
+
   <!-- 这个方法是我自己加的 -->
   <select id="selectAllUser" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from t_user
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_user
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.q8888.springboot.mybatis.server.entity.User" >
     insert into t_user (user_id, user_name, password, 
       phone)
     values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.q8888.springboot.mybatis.server.entity.User" >
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -70,6 +76,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.q8888.springboot.mybatis.server.entity.User" >
     update t_user
     <set >
@@ -85,6 +92,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.q8888.springboot.mybatis.server.entity.User" >
     update t_user
     set user_name = #{userName,jdbcType=VARCHAR},
@@ -92,4 +100,5 @@
       phone = #{phone,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+
 </mapper>
